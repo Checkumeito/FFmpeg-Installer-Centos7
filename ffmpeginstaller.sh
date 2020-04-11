@@ -14,7 +14,6 @@ BLINK='\e[5m'
 #set -e
 #set -x
 
-CUDA_REPO="10.2.89-1"
 SDL2_VER="2.0.12"
 NASM_VER="2.14.02"
 LAME_VER="3.100"
@@ -115,42 +114,6 @@ EOF
 
 rm -rf ${CHAN_DIR}
 mkdir -p ${CHAN_DIR}
-
-function CUDA_INSTALL
-{
-echo " "
-echo -e $GREEN"Starting CUDA Installation"$RESET
-echo " "
-sleep 2
-
-rpm -ivh https://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/cuda-repo-rhel7-${CUDA_REPO}.x86_64.rpm
-yum install cuda -y
-
-echo " "
-echo -e $YELLOW"CUDA Installation Completed"$RESET
-echo " "
-sleep 2
-}
-
-function NVCODEC_INSTALL
-{
-echo " "
-echo -e $GREEN"Starting NVCODEC Installation"$RESET
-echo " "
-sleep 2
-
-#Install NVCODEC
-cd ${CHAN_DIR}
-git clone https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
-cd nv-codec-headers
-make
-make install PREFIX="$DEST_DIR"
-
-echo " "
-echo -e $YELLOW"NVCODEC Installation Completed"$RESET
-echo " "
-sleep 2
-}
 
 function SDL2_INSTALL
 {
@@ -599,8 +562,6 @@ echo " "
 sleep 2
 }
 
-CUDA_INSTALL
-NVCODEC_INSTALL
 SDL2_INSTALL
 NASM_INSTALL
 YASM_INSTALL
