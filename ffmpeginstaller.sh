@@ -478,8 +478,7 @@ git clone --depth 1 git://source.ffmpeg.org/ffmpeg
 cd ffmpeg
 export TMPDIR=${TMP_DIR}
 mkdir -p $TMPDIR
-export PATH="${CUDA_DIR}/bin:$PATH"
-PKG_CONFIG_PATH="${DEST_DIR}/lib/pkgconfig" ./configure --prefix="${DEST_DIR}" --pkg-config-flags="--static" --extra-cflags="-I${DEST_DIR}/include -I${CUDA_DIR}/include" --extra-ldflags="-L${DEST_DIR}/lib -L${CUDA_DIR}/lib64" --extra-libs="-lpthread -lm" --bindir="${BIND_DIR}" --enable-gpl --enable-nonfree --enable-cuda --enable-cuda-nvcc --enable-cuvid --enable-vaapi --enable-libnpp --enable-gpl --enable-libfdk_aac --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libtheora --enable-libx265 --enable-libaom --enable-libfribidi --enable-libass --enable-libfreetype --enable-nvenc --enable-libzimg --enable-ffplay
+PKG_CONFIG_PATH="${DEST_DIR}/lib/pkgconfig" ./configure --prefix="${DEST_DIR}" --pkg-config-flags="--static" --extra-cflags="-I${DEST_DIR}/include" --extra-ldflags="-L${DEST_DIR}/lib" --extra-libs="-lpthread -lm" --bindir="${BIND_DIR}" --enable-gpl --enable-nonfree --enable-libnpp --enable-gpl --enable-libfdk_aac --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libtheora --enable-libx265 --enable-libaom --enable-libfribidi --enable-libass --enable-libfreetype --enable-nvenc --enable-libzimg --enable-ffplay
 make
 make install
 make distclean
